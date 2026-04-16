@@ -89,29 +89,8 @@
       padding: 0 24px;
     }
 
-    /* ================================================================
-       SCROLL ANIMATIONS (Intersection Observer)
-    ================================================================ */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .fade-in.visible        { opacity: 1; transform: translateY(0); }
-
-    .fade-in-left {
-      opacity: 0;
-      transform: translateX(-36px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in-left.visible   { opacity: 1; transform: translateX(0); }
-
-    .fade-in-right {
-      opacity: 0;
-      transform: translateX(36px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in-right.visible  { opacity: 1; transform: translateX(0); }
+    /* Animations removed — instant load per client request */
+    .fade-in, .fade-in-left, .fade-in-right { opacity: 1; transform: none; }
 
     /* ================================================================
        NAVIGATION
@@ -271,7 +250,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 28px;
+      padding: 15px 28px;
       font-family: var(--font-body);
       font-size: .9rem;
       font-weight: 600;
@@ -280,8 +259,16 @@
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
       border: 2px solid transparent;
       white-space: nowrap;
+      /* Mobile tap friendly */
+      min-height: 52px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .btn:hover { transform: translateY(-2px); }
+    @media (max-width: 768px) {
+      .btn { width: 100%; justify-content: center; font-size: 1rem; }
+      .hero-ctas { flex-direction: column; gap: 12px; }
+    }
 
     .btn-whatsapp {
       background: #25D366;
@@ -752,31 +739,61 @@
     }
 
     /* ================================================================
-       FLOATING WHATSAPP BUTTON
+       FLOATING ACTION BUTTONS (WhatsApp + Call)
     ================================================================ */
-    .whatsapp-float {
+    .float-buttons {
       position: fixed;
-      bottom: 28px; right: 28px;
+      bottom: 24px; right: 20px;
       z-index: 900;
-      width: 58px; height: 58px;
-      background: #25D366;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Shared style for both float buttons */
+    .whatsapp-float,
+    .call-float {
+      width: 60px; height: 60px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: transform .15s ease;
+      /* Large touch target for mobile */
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .whatsapp-float:active,
+    .call-float:active { transform: scale(0.93); }
+
+    .whatsapp-float {
+      background: #25D366;
       animation: wa-pulse 2.8s ease-in-out infinite;
-      transition: transform .2s ease;
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      animation: none;
+    .whatsapp-float:hover { animation: none; transform: scale(1.08); }
+    .whatsapp-float svg { width: 32px; height: 32px; fill: var(--white); }
+
+    .call-float {
+      background: var(--brown);
+      box-shadow: 0 4px 16px rgba(61,31,0,.35);
     }
-    .whatsapp-float svg { width: 30px; height: 30px; fill: var(--white); }
+    .call-float:hover { transform: scale(1.08); }
+    .call-float svg { width: 26px; height: 26px; fill: var(--white); }
 
     @keyframes wa-pulse {
       0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 0   rgba(37,211,102,.3); }
       50%      { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 14px rgba(37,211,102,0); }
+    }
+
+    /* On mobile push buttons above the browser bottom bar */
+    @media (max-width: 768px) {
+      .float-buttons { bottom: 20px; right: 16px; gap: 10px; }
+      .whatsapp-float,
+      .call-float    { width: 64px; height: 64px; }
+      .whatsapp-float svg { width: 34px; height: 34px; }
+      .call-float svg     { width: 28px; height: 28px; }
     }
 
     /* ================================================================
@@ -1448,16 +1465,42 @@
   </main><!-- /main -->
 
   <!-- ================================================================
-       FLOATING WHATSAPP BUTTON
+       FLOATING BUTTONS — WhatsApp (bottom) + Call (above it)
+       Works on Android, iOS, and desktop.
   ================================================================ -->
-  <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20enquire%20about%20pet%20boarding."
-     class="whatsapp-float"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Chat with ShiRock on WhatsApp">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-  </a>
+  <div class="float-buttons">
+
+    <!-- Call button — top -->
+    <a href="tel:+919949189496"
+       class="call-float"
+       aria-label="Call ShiRock Pet Boarding">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="white" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36
+          1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1
+          1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2
+          2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
+    </a>
+
+    <!-- WhatsApp button — bottom -->
+    <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20enquire%20about%20pet%20boarding."
+       class="whatsapp-float"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Chat with ShiRock on WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="white" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94
+          1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198
+          0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077
+          4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421
+          7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0
+          01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0
+          012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05
+          0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882
+          11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+
+  </div>
 
   <!-- ================================================================
        FOOTER
@@ -1541,24 +1584,6 @@
         hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
-    });
-
-    /* ── Scroll-reveal (Intersection Observer) ───────────────────── */
-    var animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    animEls.forEach(function (el) { revealObs.observe(el); });
-
-    /* Hero and trust bar are above fold — reveal immediately */
-    document.querySelectorAll('#hero .fade-in, #trust-bar .fade-in').forEach(function (el) {
-      el.classList.add('visible');
     });
 
     /* ── Carousel ────────────────────────────────────────────────── */
