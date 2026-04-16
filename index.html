@@ -1,138 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ShiRock Pets — trusted dog and cat boarding in Gandipet, Hyderabad. Your pet stays in a real home in Khanapur Village, not a kennel.">
-  <title>ShiRock Pets — Pet Boarding in Gandipet, Hyderabad</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── SEO ─────────────────────────────────────────────────── -->
+  <title>ShiRock Pet Boarding Hyderabad | Dog &amp; Cat Boarding in Gandipet</title>
+  <meta name="description" content="Safe and loving pet boarding in Gandipet, Hyderabad. Dog boarding, cat boarding and day care services. 5.0 stars on Google. Call 099491 89496." />
+  <meta name="keywords" content="pet boarding Hyderabad, dog boarding Hyderabad, cat boarding Hyderabad, pet boarding Gandipet, dog day care Hyderabad, ShiRock pet boarding" />
+  <link rel="canonical" href="https://shirockpetboarding.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ShiRock Pet Boarding Hyderabad" />
+  <meta property="og:description" content="Safe, loving pet boarding in Gandipet Hyderabad. 5 stars, trusted by Hyderabad pet parents." />
+  <meta property="og:url" content="https://shirockpetboarding.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- ─── Schema Markup ───────────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ShiRock Pet Boarding",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Khanapur Village, Gandipet, Narsingi",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500075",
+      "addressCountry": "IN"
+    },
+    "telephone": "+919949189496",
+    "email": "shirockpetboarding@gmail.com",
+    "url": "https://shirockpetboarding.com",
+    "openingHours": "Mo-Su 08:00-20:00",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "16"
+    }
+  }
+  </script>
+
   <style>
-    /* ─── RESET & BASE ─────────────────────────────────────── */
+    /* ================================================================
+       RESET & BASE
+    ================================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --brown:        #52301A;
-      --brown-light:  #8B5E3C;
-      --amber:        #C8872A;
-      --amber-hover:  #A96E1A;
-      --cream:        #FDF8F0;
-      --cream-alt:    #F4E9D4;
-      --cream-dark:   #EDD8B8;
-      --dark-bg:      #271408;
-      --text:         #2C1A0E;
-      --text-muted:   #7A5235;
-      --text-faint:   #A07850;
-      --white:        #FFFFFF;
-      --wa:           #25D366;
-      --wa-hover:     #1DA851;
-      --max-w:        1080px;
-      --r:            14px;
+      --brown:        #3D1F00;
+      --cream:        #FDF6EC;
+      --amber:        #D47C2F;
+      --amber-light:  #E8A55A;
+      --white:        #ffffff;
+      --text-dark:    #2A1400;
+      --text-mid:     #6B4226;
+      --text-light:   #9E7355;
+      --font-head:    'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --transition:   0.35s ease;
+      --radius:       4px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-family: var(--font-body);
       background: var(--cream);
-      color: var(--text);
+      color: var(--text-dark);
+      line-height: 1.7;
       font-size: 16px;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    a { color: inherit; }
     img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    ul  { list-style: none; }
 
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-    /* ─── NAV ──────────────────────────────────────────────── */
-    .nav {
+    /* ================================================================
+       SCROLL ANIMATIONS (Intersection Observer)
+    ================================================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible        { opacity: 1; transform: translateY(0); }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in-left.visible   { opacity: 1; transform: translateX(0); }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in-right.visible  { opacity: 1; transform: translateX(0); }
+
+    /* ================================================================
+       NAVIGATION
+    ================================================================ */
+    #navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 200;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: background var(--transition), padding var(--transition),
+                  box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: var(--brown);
+      padding: 12px 0;
+      box-shadow: 0 2px 24px rgba(61,31,0,.18);
+    }
+
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.1rem 2rem;
-      transition: background 0.3s, box-shadow 0.3s;
     }
-
-    .nav.scrolled {
-      background: rgba(253, 248, 240, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 1px 0 rgba(82, 48, 26, 0.1);
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      text-decoration: none;
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--brown);
-      letter-spacing: -0.01em;
-    }
-
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--amber);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      flex-shrink: 0;
-    }
-
-    .logo-icon svg { width: 18px; height: 18px; }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+    .nav-logo span { color: var(--amber); }
 
     .nav-links {
       display: flex;
+      gap: 36px;
       align-items: center;
-      gap: 1.75rem;
-      list-style: none;
     }
-
     .nav-links a {
-      font-size: 0.875rem;
+      font-size: .875rem;
       font-weight: 500;
-      color: var(--brown);
-      text-decoration: none;
-      opacity: 0.75;
-      transition: opacity 0.15s;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .03em;
+      transition: color var(--transition);
     }
+    .nav-links a:hover { color: var(--amber); }
 
-    .nav-links a:hover { opacity: 1; }
-
-    .btn-nav-wa {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--wa);
-      color: white;
-      padding: 0.5rem 1.1rem;
-      border-radius: 100px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-nav-wa:hover { background: var(--wa-hover); transform: translateY(-1px); }
-    .btn-nav-wa svg { width: 15px; height: 15px; }
-
+    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -141,856 +167,1461 @@
       background: none;
       border: none;
       padding: 4px;
-      z-index: 210;
     }
-
     .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--brown);
+      width: 24px; height: 2px;
+      background: var(--white);
       border-radius: 2px;
-      transition: all 0.3s;
+      transition: transform var(--transition), opacity var(--transition);
+      display: block;
     }
-
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ─── HERO ─────────────────────────────────────────────── */
-    .hero {
-      min-height: 100svh;
+    /* Mobile nav overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--brown);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      color: var(--white);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--amber); }
+
+    @media (max-width: 768px) {
+      .nav-links  { display: none; }
+      .hamburger  { display: flex; }
+    }
+
+    /* ================================================================
+       HERO
+    ================================================================ */
+    #hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 9rem 1.5rem 5rem;
-      background: var(--cream);
       position: relative;
+      overflow: hidden;
+
+      /*
+        // REPLACE WITH HERO IMAGE
+        background-image: url('your-hero-image.jpg');
+        background-size: cover;
+        background-position: center;
+        Recommended: warm-toned photo of a happy dog or pet at the facility.
+      */
+      background: linear-gradient(
+        135deg,
+        #2A1000 0%,
+        #3D1F00 40%,
+        #5C3010 70%,
+        #3D1F00 100%
+      );
     }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--amber);
-      background: rgba(200, 135, 42, 0.12);
-      border: 1px solid rgba(200, 135, 42, 0.25);
-      padding: 0.38rem 1rem;
-      border-radius: 100px;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-eyebrow svg { width: 12px; height: 12px; }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 6.5vw, 5rem);
-      font-weight: 800;
-      color: var(--brown);
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-      max-width: 680px;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--amber);
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      color: var(--text-muted);
-      max-width: 440px;
-      margin-bottom: 2.75rem;
-      line-height: 1.7;
-    }
-
-    .btn-wa-hero {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      background: var(--wa);
-      color: white;
-      padding: 1rem 2.25rem;
-      border-radius: 100px;
-      font-size: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.28);
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-wa-hero:hover {
-      background: var(--wa-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
-    }
-
-    .btn-wa-hero svg { width: 20px; height: 20px; }
-
-    .hero-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--text-faint);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      animation: arrowBounce 2.2s ease-in-out infinite;
-      white-space: nowrap;
-    }
-
-    .hero-hint svg { width: 16px; height: 16px; }
-
-    @keyframes arrowBounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(7px); }
-    }
-
-
-    /* ─── SHARED SECTION STYLES ────────────────────────────── */
-    section { padding: 5.5rem 1.5rem; }
-
-    .container { max-width: var(--max-w); margin: 0 auto; }
-
-    .eyebrow {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-      font-weight: 800;
-      color: var(--brown);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 3rem;
-    }
-
-    /* ─── SERVICES ─────────────────────────────────────────── */
-    #services { background: var(--cream-alt); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .svc-card {
-      background: var(--white);
-      border-radius: var(--r);
-      padding: 1.85rem 1.65rem;
-      border: 1px solid rgba(82, 48, 26, 0.07);
-      transition: box-shadow 0.22s, transform 0.22s;
-    }
-
-    .svc-card:hover {
-      box-shadow: 0 10px 36px rgba(82, 48, 26, 0.1);
-      transform: translateY(-4px);
-    }
-
-    .svc-icon {
-      width: 46px;
-      height: 46px;
-      background: rgba(200, 135, 42, 0.1);
-      border-radius: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.2rem;
-      color: var(--amber);
-    }
-
-    .svc-icon svg { width: 22px; height: 22px; }
-
-    .svc-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--brown);
-      margin-bottom: 0.45rem;
-    }
-
-    .svc-card p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-
-    /* ─── TRUST ────────────────────────────────────────────── */
-    #trust { background: var(--dark-bg); }
-
-    #trust .eyebrow { color: rgba(200, 135, 42, 0.8); }
-
-    #trust .section-title { color: var(--cream); }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-    }
-
-    .trust-item { display: flex; flex-direction: column; gap: 1rem; }
-
-    .trust-num {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: rgba(200, 135, 42, 0.2);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-      margin-bottom: -0.25rem;
-    }
-
-    .trust-item h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.3;
-    }
-
-    .trust-item p {
-      font-size: 0.88rem;
-      color: rgba(253, 248, 240, 0.58);
-      line-height: 1.7;
-    }
-
-
-    /* ─── HOW IT WORKS ─────────────────────────────────────── */
-    #how { background: var(--cream); }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      position: relative;
-    }
-
-    /* Dashed connector on desktop */
-    .steps::before {
+    #hero::before {
       content: '';
       position: absolute;
-      top: 26px;
-      left: calc(16.66% + 16px);
-      right: calc(16.66% + 16px);
-      height: 1px;
-      border-top: 2px dashed rgba(200, 135, 42, 0.25);
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(212,124,47,.08) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    .step { position: relative; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
 
-    .step-num {
-      width: 52px;
-      height: 52px;
-      background: var(--cream-alt);
-      border: 2px solid var(--cream-dark);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--amber);
-      margin-bottom: 1.25rem;
-    }
-
-    .step h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--brown);
-      margin-bottom: 0.45rem;
-    }
-
-    .step p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    .step-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1rem;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--wa);
-      text-decoration: none;
-      transition: gap 0.2s;
-    }
-
-    .step-cta:hover { gap: 0.6rem; }
-    .step-cta svg { width: 14px; height: 14px; }
-
-
-    /* ─── CONTACT ───────────────────────────────────────────── */
-    #contact { background: var(--cream-alt); }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .map-wrap {
-      border-radius: var(--r);
-      overflow: hidden;
-      height: 340px;
-      box-shadow: 0 6px 28px rgba(82, 48, 26, 0.12);
-    }
-
-    .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-    }
-
-    .c-item { display: flex; gap: 1rem; align-items: flex-start; }
-
-    .c-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(200, 135, 42, 0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--amber);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .c-icon svg { width: 17px; height: 17px; }
-
-    .c-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 0.25rem;
-    }
-
-    .c-value {
-      font-size: 0.975rem;
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .8rem;
       font-weight: 600;
-      color: var(--brown);
-      line-height: 1.5;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
     }
-
-    .c-value a {
-      color: var(--brown);
-      text-decoration: none;
-      transition: color 0.15s;
+    #hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 22px;
     }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 42px;
+      font-weight: 300;
+      max-width: 480px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-    .c-value a:hover { color: var(--amber); }
-
-    .btn-wa-contact {
+    /* ── Buttons ── */
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      background: var(--wa);
-      color: white;
-      padding: 0.9rem 1.8rem;
-      border-radius: 100px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-decoration: none;
-      width: fit-content;
-      margin-top: 0.5rem;
-      transition: background 0.2s, transform 0.15s;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: var(--white);
+      border-color: #25D366;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5c;
+      box-shadow: 0 8px 24px rgba(37,211,102,.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.5);
+    }
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,.07);
+    }
+    .btn-amber {
+      background: var(--amber);
+      color: var(--white);
+      border-color: var(--amber);
+    }
+    .btn-amber:hover {
+      background: #be6e25;
+      box-shadow: 0 8px 24px rgba(212,124,47,.35);
     }
 
-    .btn-wa-contact:hover { background: var(--wa-hover); transform: translateY(-1px); }
-    .btn-wa-contact svg { width: 18px; height: 18px; }
-
-
-    /* ─── FOOTER ────────────────────────────────────────────── */
-    footer {
-      background: var(--dark-bg);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      font-size: 0.82rem;
-      color: rgba(253, 248, 240, 0.35);
+    /* ================================================================
+       TRUST BAR
+    ================================================================ */
+    #trust-bar {
+      background: var(--brown);
+      padding: 22px 0;
     }
-
-    footer span { color: rgba(253, 248, 240, 0.55); }
-
-
-    /* ─── FLOATING WHATSAPP ─────────────────────────────────── */
-    .wa-float {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 150;
-      width: 54px;
-      height: 54px;
-      background: var(--wa);
-      border-radius: 50%;
+    .trust-inner {
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: white;
-      text-decoration: none;
-      box-shadow: 0 4px 22px rgba(37, 211, 102, 0.38);
-      transition: transform 0.2s, box-shadow 0.2s;
+      flex-wrap: wrap;
     }
-
-    .wa-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+    .trust-item {
+      flex: 1 1 200px;
+      text-align: center;
+      padding: 12px 24px;
+      position: relative;
     }
-
-    .wa-float svg { width: 26px; height: 26px; }
-
-
-    /* ─── RESPONSIVE ────────────────────────────────────────── */
-    @media (max-width: 760px) {
-      /* Mobile nav overlay */
-      .nav { padding: 1rem 1.25rem; }
-
-      .nav-right {
-        position: fixed;
-        inset: 0;
-        background: var(--cream);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2.5rem;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s;
-        z-index: 190;
-      }
-
-      .nav-right.open { opacity: 1; pointer-events: all; }
-
-      .nav-links {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-      }
-
-      .nav-links a { font-size: 1.25rem; font-weight: 600; opacity: 1; }
-
-      .hamburger { display: flex; }
-
-      /* Sections */
-      section { padding: 4rem 1.25rem; }
-
-      .section-title { margin-bottom: 2rem; }
-
-      /* Trust grid */
-      .trust-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      /* Steps */
-      .steps {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .steps::before { display: none; }
-
-      /* Contact */
-      .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .map-wrap { height: 260px; }
-
-      /* Hero */
-      .hero { padding: 8rem 1.25rem 4rem; }
+    .trust-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: rgba(255,255,255,.15);
+    }
+    .trust-item strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+    .trust-item span {
+      font-size: .78rem;
+      color: rgba(255,255,255,.5);
+      letter-spacing: .04em;
+      text-transform: uppercase;
     }
 
     @media (max-width: 480px) {
-      .services-grid { grid-template-columns: 1fr; }
+      .trust-item:not(:last-child)::after { display: none; }
     }
+
+    /* ================================================================
+       SHARED SECTION STYLES
+    ================================================================ */
+    .section-tag {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-mid);
+      max-width: 520px;
+    }
+
+    /* ================================================================
+       SERVICES
+    ================================================================ */
+    #services { padding: 100px 0; background: var(--cream); }
+    #services .intro { margin-bottom: 72px; }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      margin-bottom: 2px;
+    }
+    .service-row:last-child { margin-bottom: 0; }
+    .service-row.reverse .service-image { order: 2; }
+    .service-row.reverse .service-body  { order: 1; }
+
+    .service-image {
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-image-ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .05em;
+      text-align: center;
+      padding: 24px;
+    }
+    /* REPLACE THESE BACKGROUNDS WITH REAL PHOTOS */
+    .si-1 { background: #5C3010; }
+    .si-2 { background: #7A4220; }
+    .si-3 { background: #4A2800; }
+    .si-4 { background: #6B3818; }
+
+    .service-body {
+      background: var(--white);
+      padding: 56px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .service-num {
+      font-family: var(--font-head);
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .service-body h3 {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 14px;
+    }
+    .service-body p {
+      color: var(--text-mid);
+      font-size: .95rem;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 768px) {
+      .service-row,
+      .service-row.reverse {
+        grid-template-columns: 1fr;
+      }
+      .service-row.reverse .service-image,
+      .service-row.reverse .service-body { order: unset; }
+      .service-image { min-height: 220px; }
+      .service-body  { padding: 36px 28px; }
+      .service-num   { font-size: 3.5rem; }
+    }
+
+    /* ================================================================
+       GALLERY / CAROUSEL
+    ================================================================ */
+    #gallery {
+      padding: 100px 0;
+      background: var(--brown);
+      overflow: hidden;
+    }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-tag   { color: var(--amber-light); }
+    #gallery .section-sub   { color: rgba(255,255,255,.5); }
+    #gallery .intro         { margin-bottom: 48px; }
+
+    .carousel-track-container { overflow: hidden; border-radius: var(--radius); }
+    .carousel-track {
+      display: flex;
+      transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+    }
+    .carousel-slide {
+      min-width: 100%;
+      height: 460px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    /* REPLACE THESE WITH REAL PHOTOS */
+    .gph-1 { background: #4A2800; }
+    .gph-2 { background: #5C3210; }
+    .gph-3 { background: #3A1E00; }
+    .gph-4 { background: #6B3A18; }
+    .gph-5 { background: #512800; }
+    .gph-6 { background: #7A4520; }
+
+    .gallery-ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .gallery-ph-icon {
+      width: 48px; height: 48px;
+      border: 2px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .carousel-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.25);
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .carousel-btn:hover {
+      border-color: var(--amber);
+      background: rgba(212,124,47,.15);
+    }
+    .carousel-dots { display: flex; gap: 8px; align-items: center; }
+    .carousel-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.25);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      border: none;
+    }
+    .carousel-dot.active {
+      background: var(--amber);
+      transform: scale(1.35);
+    }
+
+    @media (max-width: 768px) { .carousel-slide { height: 280px; } }
+
+    /* ================================================================
+       HOW IT WORKS
+    ================================================================ */
+    #how-it-works { padding: 100px 0; background: var(--white); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 40px;
+      margin-top: 64px;
+    }
+    .step { position: relative; padding-top: 20px; }
+    .step-num {
+      font-family: var(--font-head);
+      font-size: 6.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      position: absolute;
+      top: 0; left: -8px;
+      z-index: 0;
+      user-select: none;
+    }
+    .step-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 52px;
+    }
+    .step-content h3 {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+    .step-content p {
+      font-size: .92rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 80px;
+      right: -20px;
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, var(--amber), transparent);
+    }
+
+    @media (max-width: 768px) {
+      .steps-grid { grid-template-columns: 1fr; gap: 48px; }
+      .step:not(:last-child)::after { display: none; }
+      .step-num { font-size: 5rem; }
+    }
+
+    /* ================================================================
+       REVIEWS
+    ================================================================ */
+    #reviews { padding: 100px 0; background: var(--cream); }
+
+    .reviews-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .google-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      border: 1px solid rgba(61,31,0,.08);
+      border-radius: 40px;
+      padding: 10px 20px;
+    }
+    .google-badge .stars { color: #F5A623; font-size: 1.05rem; letter-spacing: 2px; }
+    .google-badge span   { font-size: .82rem; color: var(--text-mid); font-weight: 500; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 32px 28px;
+      border: 1px solid rgba(61,31,0,.06);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .review-card:hover {
+      box-shadow: 0 12px 40px rgba(61,31,0,.1);
+      transform: translateY(-4px);
+    }
+    .review-stars { color: #F5A623; font-size: .95rem; letter-spacing: 2px; margin-bottom: 16px; }
+    .review-text {
+      font-size: .925rem;
+      line-height: 1.8;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .reviewer-name { font-weight: 600; font-size: .88rem; color: var(--brown); }
+    .verified-tag {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      background: var(--cream);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .reviews-cta { text-align: center; }
+
+    @media (max-width: 900px) {
+      .reviews-grid  { grid-template-columns: 1fr; }
+      .reviews-header { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ================================================================
+       LOCATION + CONTACT
+    ================================================================ */
+    #contact { padding: 100px 0; background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 64px;
+    }
+    .contact-info h3 {
+      font-family: var(--font-head);
+      font-size: 1.55rem;
+      color: var(--brown);
+      margin-bottom: 32px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .contact-icon {
+      width: 40px; height: 40px;
+      background: var(--cream);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-detail-text strong {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .contact-detail-text a,
+    .contact-detail-text span {
+      font-size: .98rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+    .contact-detail-text a:hover { color: var(--amber); }
+
+    .map-wrapper {
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(61,31,0,.12);
+    }
+    .map-wrapper iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .map-wrapper iframe { height: 300px; }
+    }
+
+    /* ================================================================
+       FLOATING WHATSAPP BUTTON
+    ================================================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 900;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      animation: wa-pulse 2.8s ease-in-out infinite;
+      transition: transform .2s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: var(--white); }
+
+    @keyframes wa-pulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 0   rgba(37,211,102,.3); }
+      50%      { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 14px rgba(37,211,102,0); }
+    }
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    footer {
+      background: var(--brown);
+      padding: 56px 0 32px;
+      color: rgba(255,255,255,.6);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo { font-size: 1.5rem; margin-bottom: 12px; }
+    .footer-brand p {
+      font-size: .88rem;
+      line-height: 1.7;
+      max-width: 260px;
+    }
+    .footer-col h4 {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: .875rem;
+      color: rgba(255,255,255,.6);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--amber); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: .8rem;
+    }
+    .footer-bottom a { color: var(--amber); }
+
+    @media (max-width: 768px) {
+      .footer-inner  { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ================================================================
+       UTILITY
+    ================================================================ */
+    .text-center { text-align: center; }
   </style>
 </head>
+
 <body>
 
-  <!-- ─────────────────────────────────────────────────────────
-       NAV
-  ───────────────────────────────────────────────────────────── -->
-  <nav class="nav" id="mainNav">
-    <a href="#" class="logo" aria-label="ShiRock Pets home">
-      <span class="logo-icon" aria-hidden="true">
-        <!-- Paw -->
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <circle cx="5.5" cy="7.8" r="1.9"/>
-          <circle cx="9.2" cy="5" r="1.65"/>
-          <circle cx="14.8" cy="5" r="1.65"/>
-          <circle cx="18.5" cy="7.8" r="1.9"/>
-          <path d="M12 10c-3.8 0-6.8 2.8-6.8 5.8 0 2.2 2.2 3.9 6.8 3.9s6.8-1.7 6.8-3.9c0-3-3-5.8-6.8-5.8z"/>
-        </svg>
-      </span>
-      ShiRock Pets
-    </a>
+  <!-- ================================================================
+       NAVIGATION
+  ================================================================ -->
+  <header>
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="#" class="nav-logo" aria-label="ShiRock Pet Boarding — go to top">
+          Shi<span>Rock</span>
+        </a>
 
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+        <ul class="nav-links" role="list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
 
-    <div class="nav-right" id="navRight">
-      <ul class="nav-links">
-        <li><a href="#services" class="nav-link-item">Services</a></li>
-        <li><a href="#trust"    class="nav-link-item">Why Us</a></li>
-        <li><a href="#how"      class="nav-link-item">How It Works</a></li>
-        <li><a href="#contact"  class="nav-link-item">Location</a></li>
-      </ul>
-      <a href="https://wa.me/919000000000?text=Hi%2C+I%27d+like+to+know+more+about+pet+boarding+at+ShiRock+Pets"
-         class="btn-nav-wa" target="_blank" rel="noopener noreferrer">
-        <!-- WhatsApp icon -->
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        WhatsApp
-      </a>
-    </div>
+        <button class="hamburger" id="hamburger"
+                aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile overlay menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="#hero"     class="mobile-link">Home</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#gallery"  class="mobile-link">Gallery</a>
+    <a href="#reviews"  class="mobile-link">Reviews</a>
+    <a href="#contact"  class="mobile-link">Contact</a>
   </nav>
 
+  <main>
 
-  <!-- ─────────────────────────────────────────────────────────
-       HERO
-  ───────────────────────────────────────────────────────────── -->
-  <section class="hero" id="home" aria-label="Hero">
-    <div class="hero-eyebrow" aria-label="Location: Gandipet, Hyderabad">
-      <!-- Location pin -->
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-      </svg>
-      Gandipet · Hyderabad
-    </div>
-
-    <h1>A home your pet<br><em>actually</em> likes.</h1>
-
-    <p class="hero-sub">
-      Dog and cat boarding in Khanapur Village, Gandipet —
-      in a real house, not a kennel. We keep it small, calm, and personal.
-    </p>
-
-    <a href="https://wa.me/919000000000?text=Hi%2C+I%27d+like+to+enquire+about+pet+boarding+at+ShiRock+Pets"
-       class="btn-wa-hero" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Chat on WhatsApp
-    </a>
-
-    <div class="hero-hint" aria-hidden="true">
-      scroll
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
-      </svg>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────────────────
-       SERVICES
-  ───────────────────────────────────────────────────────────── -->
-  <section id="services">
-    <div class="container">
-      <p class="eyebrow">What We Offer</p>
-      <h2 class="section-title">We take care of them<br>the way you would.</h2>
-
-      <div class="services-grid">
-
-        <div class="svc-card">
-          <div class="svc-icon" aria-hidden="true">
-            <!-- Paw / Dog -->
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="5.5" cy="7.8" r="1.9"/>
-              <circle cx="9.2" cy="5" r="1.65"/>
-              <circle cx="14.8" cy="5" r="1.65"/>
-              <circle cx="18.5" cy="7.8" r="1.9"/>
-              <path d="M12 10c-3.8 0-6.8 2.8-6.8 5.8 0 2.2 2.2 3.9 6.8 3.9s6.8-1.7 6.8-3.9c0-3-3-5.8-6.8-5.8z"/>
-            </svg>
+    <!-- ================================================================
+         HERO
+    ================================================================ -->
+    <section id="hero" aria-label="Hero — ShiRock Pet Boarding">
+      <!--
+        // REPLACE WITH HERO IMAGE
+        Add to #hero CSS:
+          background-image: url('your-hero.jpg');
+          background-size: cover;
+          background-position: center;
+        and remove the gradient background.
+        Photo suggestion: warm outdoor shot of a happy dog at the Gandipet facility.
+        alt="Pet boarding facility Gandipet Hyderabad ShiRock"
+      -->
+      <div class="container">
+        <div class="hero-content fade-in">
+          <span class="hero-eyebrow">Gandipet, Hyderabad</span>
+          <h1>Your Pet's Home<br>Away From Home</h1>
+          <p class="hero-sub">
+            Safe, loving pet boarding in Gandipet, Hyderabad —
+            where every tail wags and every purr is heard.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20book%20boarding%20for%20my%20pet."
+               class="btn btn-whatsapp"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Book via WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Book via WhatsApp
+            </a>
+            <a href="tel:+919949189496" class="btn btn-outline"
+               aria-label="Call ShiRock Pet Boarding">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              Call Now
+            </a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         TRUST BAR
+    ================================================================ -->
+    <section id="trust-bar" aria-label="Trust indicators">
+      <div class="container">
+        <div class="trust-inner">
+          <div class="trust-item fade-in">
+            <strong>16 Google Reviews</strong>
+            <span>Verified Feedback</span>
+          </div>
+          <div class="trust-item fade-in">
+            <strong>5.0 &#11088; Rating</strong>
+            <span>Perfect Score</span>
+          </div>
+          <div class="trust-item fade-in">
+            <strong>Hyderabad's Trusted Boarding</strong>
+            <span>Gandipet &amp; Surroundings</span>
+          </div>
+          <div class="trust-item fade-in">
+            <strong>Open 7 Days</strong>
+            <span>8 AM &#8211; 8 PM Daily</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SERVICES
+    ================================================================ -->
+    <section id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="intro fade-in">
+          <span class="section-tag">What We Offer</span>
+          <h2 class="section-title" id="services-heading">
+            Care Designed<br>For Every Pet
+          </h2>
+          <p class="section-sub">
+            From overnight stays to day care &#8212; tailored, attentive care
+            for dogs and cats in the heart of Gandipet.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 1: Dog Boarding -->
+      <article class="service-row" aria-label="Dog boarding service">
+        <div class="service-image fade-in-left">
+          <div class="service-image-ph si-1">
+            <!--
+              // REPLACE WITH SERVICE IMAGE
+              Photo: happy dogs in a safe boarding space
+              alt="Dog boarding facility Hyderabad Gandipet ShiRock"
+            -->
+            // REPLACE WITH PHOTO &#8212; Dog boarding, happy dogs, safe space
+          </div>
+        </div>
+        <div class="service-body fade-in-right">
+          <div class="service-num" aria-hidden="true">01</div>
           <h3>Dog Boarding</h3>
-          <p>Overnight and multi-day stays. Walks, meals, play — your dog lives with us, not in a cage.</p>
+          <p>
+            Overnight stays and daily care for your dog in a warm,
+            home-like environment. Personal attention, regular meals,
+            playtime and rest &#8212; exactly as they deserve.
+          </p>
+          <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20know%20more%20about%20Dog%20Boarding."
+             class="btn btn-amber"
+             target="_blank" rel="noopener noreferrer">
+            Enquire on WhatsApp
+          </a>
         </div>
+      </article>
 
-        <div class="svc-card">
-          <div class="svc-icon" aria-hidden="true">
-            <!-- Moon (cat) -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
+      <!-- Service 2: Cat Boarding -->
+      <article class="service-row reverse" aria-label="Cat boarding service">
+        <div class="service-image fade-in-right">
+          <div class="service-image-ph si-2">
+            <!--
+              // REPLACE WITH SERVICE IMAGE
+              Photo: calm, cozy cat space
+              alt="Cat boarding Hyderabad ShiRock Gandipet"
+            -->
+            // REPLACE WITH PHOTO &#8212; Cat boarding, calm cozy space
           </div>
+        </div>
+        <div class="service-body fade-in-left">
+          <div class="service-num" aria-hidden="true">02</div>
           <h3>Cat Boarding</h3>
-          <p>Quiet, calm, separate space for your cat. No barking nearby. No stress. Just rest.</p>
+          <p>
+            A quiet, separate space crafted for cats. Calm surroundings,
+            gentle handling and dedicated care &#8212; so your feline stays
+            comfortable and stress-free while you're away.
+          </p>
+          <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20know%20more%20about%20Cat%20Boarding."
+             class="btn btn-amber"
+             target="_blank" rel="noopener noreferrer">
+            Enquire on WhatsApp
+          </a>
         </div>
+      </article>
 
-        <div class="svc-card">
-          <div class="svc-icon" aria-hidden="true">
-            <!-- Sun (daycare) -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4"/>
-              <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-              <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
+      <!-- Service 3: Day Care -->
+      <article class="service-row" aria-label="Pet day care service">
+        <div class="service-image fade-in-left">
+          <div class="service-image-ph si-3">
+            <!--
+              // REPLACE WITH SERVICE IMAGE
+              Photo: morning drop-off, dog playing
+              alt="Pet day care Hyderabad dog day care Gandipet ShiRock"
+            -->
+            // REPLACE WITH PHOTO &#8212; Day care, morning drop-off fun
           </div>
+        </div>
+        <div class="service-body fade-in-right">
+          <div class="service-num" aria-hidden="true">03</div>
           <h3>Day Care</h3>
-          <p>Drop your dog off in the morning, pick them up in the evening. Great for busy workdays.</p>
-        </div>
-
-        <div class="svc-card">
-          <div class="svc-icon" aria-hidden="true">
-            <!-- Leaf (small pets) -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-            </svg>
-          </div>
-          <h3>Small Pets</h3>
-          <p>Rabbits, guinea pigs, and others — message us first and we'll tell you if we can help.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────────────────
-       TRUST  (dark section — breaks the visual flow)
-  ───────────────────────────────────────────────────────────── -->
-  <section id="trust">
-    <div class="container">
-      <p class="eyebrow">Why ShiRock Pets</p>
-      <h2 class="section-title">Three things that<br>actually matter.</h2>
-
-      <div class="trust-grid">
-
-        <div class="trust-item">
-          <div class="trust-num" aria-hidden="true">01</div>
-          <h3>Your pet stays in a real home</h3>
           <p>
-            Not a kennel, not a facility. A house — with sofas, a yard, and people around all day.
-            Your dog sleeps where we sleep.
+            Drop your pet off in the morning and pick them up in
+            the evening. A full day of play, socialisation and care &#8212;
+            so they come home happy and you focus on your day.
           </p>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-num" aria-hidden="true">02</div>
-          <h3>Open space in Gandipet</h3>
-          <p>
-            We're in Khanapur Village — away from city noise and traffic. Your dog gets
-            real outdoor time. No concrete yard, no tiny pen.
-          </p>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-num" aria-hidden="true">03</div>
-          <h3>We limit how many pets we take</h3>
-          <p>
-            Your pet isn't one of thirty. We keep numbers small deliberately, so every animal
-            gets proper time and attention from us.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────────────────
-       HOW IT WORKS
-  ───────────────────────────────────────────────────────────── -->
-  <section id="how">
-    <div class="container">
-      <p class="eyebrow">The Process</p>
-      <h2 class="section-title">Simple. Three steps.</h2>
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Send us a WhatsApp</h3>
-          <p>
-            Tell us your pet's name, breed, age, and your dates.
-            We'll reply quickly with availability and any questions.
-          </p>
-          <a href="https://wa.me/919000000000?text=Hi%2C+I%27d+like+to+enquire+about+pet+boarding"
-             class="step-cta" target="_blank" rel="noopener noreferrer">
-            Start here
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+          <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20know%20more%20about%20Day%20Care."
+             class="btn btn-amber"
+             target="_blank" rel="noopener noreferrer">
+            Enquire on WhatsApp
           </a>
         </div>
+      </article>
 
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Quick meet &amp; greet</h3>
+      <!-- Service 4: Special Care -->
+      <article class="service-row reverse" aria-label="Special care service">
+        <div class="service-image fade-in-right">
+          <div class="service-image-ph si-4">
+            <!--
+              // REPLACE WITH SERVICE IMAGE
+              Photo: gentle handling of senior or post-surgery pet
+              alt="Senior pet care post-surgery pet boarding Hyderabad ShiRock"
+            -->
+            // REPLACE WITH PHOTO &#8212; Special care, gentle attentive support
+          </div>
+        </div>
+        <div class="service-body fade-in-left">
+          <div class="service-num" aria-hidden="true">04</div>
+          <h3>Special Care</h3>
           <p>
-            Bring your pet over to see the space — and so we can meet each other.
-            It helps your pet settle in on the actual stay.
+            Dedicated care for senior pets, post-surgery recovery
+            and pets with special needs. We follow your pet's routine,
+            medication schedule and individual comfort requirements.
+          </p>
+          <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20My%20pet%20needs%20special%20care.%20Can%20we%20talk?"
+             class="btn btn-amber"
+             target="_blank" rel="noopener noreferrer">
+            Enquire on WhatsApp
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================================================================
+         GALLERY CAROUSEL
+    ================================================================ -->
+    <section id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="intro fade-in">
+          <span class="section-tag">Our Facility &amp; Pets</span>
+          <h2 class="section-title" id="gallery-heading">Life at ShiRock</h2>
+          <p class="section-sub">
+            A glimpse into the safe, happy environment your pet
+            calls home while in our care.
           </p>
         </div>
 
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Drop off and go</h3>
-          <p>
-            Leave your pet with us. We'll send you updates and photos.
-            You can actually relax.
-          </p>
-        </div>
+        <div class="carousel-wrapper fade-in" aria-label="Photo gallery">
+          <div class="carousel-track-container">
+            <div class="carousel-track" id="carouselTrack" role="list">
 
+              <!-- Slide 1 — REPLACE WITH ACTUAL PHOTO -->
+              <div class="carousel-slide gph-1" role="listitem" aria-label="Gallery 1 of 6">
+                <div class="gallery-ph">
+                  <div class="gallery-ph-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                  </div>
+                  // ADD PHOTO HERE &#8212; Dog playing in the yard
+                </div>
+              </div>
+
+              <!-- Slide 2 — REPLACE WITH ACTUAL PHOTO -->
+              <div class="carousel-slide gph-2" role="listitem" aria-label="Gallery 2 of 6">
+                <div class="gallery-ph">
+                  <div class="gallery-ph-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                  </div>
+                  // ADD PHOTO HERE &#8212; Facility interior
+                </div>
+              </div>
+
+              <!-- Slide 3 — REPLACE WITH ACTUAL PHOTO -->
+              <div class="carousel-slide gph-3" role="listitem" aria-label="Gallery 3 of 6">
+                <div class="gallery-ph">
+                  <div class="gallery-ph-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                  </div>
+                  // ADD PHOTO HERE &#8212; Cat resting comfortably
+                </div>
+              </div>
+
+              <!-- Slide 4 — REPLACE WITH ACTUAL PHOTO -->
+              <div class="carousel-slide gph-4" role="listitem" aria-label="Gallery 4 of 6">
+                <div class="gallery-ph">
+                  <div class="gallery-ph-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                  </div>
+                  // ADD PHOTO HERE &#8212; Outdoor play area
+                </div>
+              </div>
+
+              <!-- Slide 5 — REPLACE WITH ACTUAL PHOTO -->
+              <div class="carousel-slide gph-5" role="listitem" aria-label="Gallery 5 of 6">
+                <div class="gallery-ph">
+                  <div class="gallery-ph-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                  </div>
+                  // ADD PHOTO HERE &#8212; Dogs relaxing / sleeping area
+                </div>
+              </div>
+
+              <!-- Slide 6 — REPLACE WITH ACTUAL PHOTO -->
+              <div class="carousel-slide gph-6" role="listitem" aria-label="Gallery 6 of 6">
+                <div class="gallery-ph">
+                  <div class="gallery-ph-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                  </div>
+                  // ADD PHOTO HERE &#8212; Team with pets / happy reunion
+                </div>
+              </div>
+
+            </div><!-- /carousel-track -->
+          </div><!-- /carousel-track-container -->
+
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </button>
+            <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Gallery slides"></div>
+            <button class="carousel-btn" id="nextBtn" aria-label="Next slide">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- ─────────────────────────────────────────────────────────
-       CONTACT + MAP
-  ───────────────────────────────────────────────────────────── -->
-  <section id="contact">
-    <div class="container">
-      <p class="eyebrow">Find Us</p>
-      <h2 class="section-title">We're in Gandipet.<br>Come see us.</h2>
-
-      <div class="contact-layout">
-        <!-- Google Maps embed — Gandipet / Khanapur Village -->
-        <div class="map-wrap">
-          <iframe
-            src="https://maps.google.com/maps?q=Gandipet,+Hyderabad,+Telangana&t=&z=14&ie=UTF8&iwloc=&output=embed"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="ShiRock Pets — Khanapur Village, Gandipet, Hyderabad">
-          </iframe>
+    <!-- ================================================================
+         HOW IT WORKS
+    ================================================================ -->
+    <section id="how-it-works" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="fade-in text-center">
+          <span class="section-tag">The Process</span>
+          <h2 class="section-title" id="how-heading">
+            Simple Process,<br>Happy Pets
+          </h2>
+          <p class="section-sub" style="margin: 0 auto;">
+            Getting started with ShiRock takes minutes &#8212; not paperwork.
+          </p>
         </div>
 
-        <div class="contact-details">
-          <div class="c-item">
-            <div class="c-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div>
-              <p class="c-label">Address</p>
-              <p class="c-value">Khanapur Village, Gandipet<br>Hyderabad, Telangana — 500075</p>
-            </div>
-          </div>
-
-          <div class="c-item">
-            <div class="c-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.57 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.57a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="c-label">Phone</p>
-              <p class="c-value"><a href="tel:+919000000000">+91 90000 00000</a></p>
+        <div class="steps-grid">
+          <div class="step fade-in">
+            <div class="step-num" aria-hidden="true">01</div>
+            <div class="step-content">
+              <h3>WhatsApp Us Your Pet Details</h3>
+              <p>
+                Send us your pet's name, breed, age and the dates you
+                need. We'll reply promptly with availability and any
+                questions we have.
+              </p>
             </div>
           </div>
 
-          <div class="c-item">
-            <div class="c-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <div>
-              <p class="c-label">Hours</p>
-              <p class="c-value">Open every day<br>8 AM – 8 PM for drop-off &amp; pickup</p>
+          <div class="step fade-in" style="transition-delay:.15s">
+            <div class="step-num" aria-hidden="true">02</div>
+            <div class="step-content">
+              <h3>Quick Visit or Video Call</h3>
+              <p>
+                A short meet-and-greet at our Gandipet facility or a
+                quick video call &#8212; so both your pet and you feel
+                completely at ease before the stay.
+              </p>
             </div>
           </div>
 
-          <a href="https://wa.me/919000000000?text=Hi%2C+I%27d+like+to+know+more+about+pet+boarding+at+ShiRock+Pets"
-             class="btn-wa-contact" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            Message us on WhatsApp
+          <div class="step fade-in" style="transition-delay:.3s">
+            <div class="step-num" aria-hidden="true">03</div>
+            <div class="step-content">
+              <h3>Drop Off &amp; Relax</h3>
+              <p>
+                Leave with peace of mind. We send updates and photos
+                while your pet enjoys their stay &#8212; so you can focus
+                completely worry-free.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top:52px">
+          <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20get%20started."
+             class="btn btn-amber"
+             target="_blank" rel="noopener noreferrer">
+            Get Started on WhatsApp
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
+    <!-- ================================================================
+         REVIEWS
+    ================================================================ -->
+    <section id="reviews" aria-labelledby="reviews-heading">
+      <div class="container">
+        <div class="reviews-header">
+          <div class="fade-in">
+            <span class="section-tag">Testimonials</span>
+            <h2 class="section-title" id="reviews-heading">
+              What Pet Parents Say
+            </h2>
+          </div>
+          <div class="google-badge fade-in" aria-label="5.0 stars, 16 Google reviews">
+            <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>5.0 &nbsp;&middot;&nbsp; 16 Google Reviews</span>
+          </div>
+        </div>
 
-  <!-- ─────────────────────────────────────────────────────────
-       FOOTER
-  ───────────────────────────────────────────────────────────── -->
-  <footer>
-    <p>© 2025 <span>ShiRock Pets</span> · Khanapur Village, Gandipet, Hyderabad</p>
-  </footer>
+        <div class="reviews-grid">
 
+          <article class="review-card fade-in" aria-label="Review by Priya Reddy">
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">
+              "We were nervous leaving our golden retriever Bruno for
+              a week, but ShiRock completely put us at ease. They sent
+              daily photos, Bruno looked happy and well-fed the whole
+              time. Best pet boarding in Gandipet &#8212; won't go anywhere else!"
+            </p>
+            <div class="review-author">
+              <span class="reviewer-name">Priya Reddy</span>
+              <span class="verified-tag">Verified Google Review</span>
+            </div>
+          </article>
 
-  <!-- ─────────────────────────────────────────────────────────
+          <article class="review-card fade-in" style="transition-delay:.12s"
+                   aria-label="Review by Karan Mehta">
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">
+              "My cat Mochi is usually very anxious, but the team at
+              ShiRock gave her a calm, separate space and she settled
+              in within a day. Received updates every evening. Truly
+              professional &#8212; you can tell they genuinely love animals."
+            </p>
+            <div class="review-author">
+              <span class="reviewer-name">Karan Mehta</span>
+              <span class="verified-tag">Verified Google Review</span>
+            </div>
+          </article>
+
+          <article class="review-card fade-in" style="transition-delay:.24s"
+                   aria-label="Review by Ananya Sharma">
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">
+              "Took our senior labrador Coco here post his surgery for
+              special care. The attention to his medication, diet and
+              limited exercise was impeccable. Living in Narsingi, this
+              is genuinely the best facility nearby. Highly recommend."
+            </p>
+            <div class="review-author">
+              <span class="reviewer-name">Ananya Sharma</span>
+              <span class="verified-tag">Verified Google Review</span>
+            </div>
+          </article>
+
+        </div><!-- /reviews-grid -->
+
+        <div class="reviews-cta fade-in">
+          <a href="https://www.google.com/maps/search/ShiRock+Pet+Boarding+Hyderabad"
+             class="btn btn-amber"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="See all 16 reviews on Google">
+            See All Reviews on Google
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         LOCATION + CONTACT
+    ================================================================ -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="fade-in">
+          <span class="section-tag">Find Us</span>
+          <h2 class="section-title" id="contact-heading">
+            Come Visit Us<br>in Gandipet
+          </h2>
+          <p class="section-sub">
+            We're easy to find, and always happy to show you around
+            before your pet's first stay.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Left: contact details -->
+          <div class="contact-info fade-in-left">
+            <h3>Get in Touch</h3>
+
+            <div class="contact-detail">
+              <div class="contact-icon" aria-hidden="true">&#128205;</div>
+              <div class="contact-detail-text">
+                <strong>Address</strong>
+                <span>
+                  Khanapur Village, Gandipet,<br>
+                  Narsingi, Hyderabad,<br>
+                  Telangana 500075
+                </span>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-icon" aria-hidden="true">&#128222;</div>
+              <div class="contact-detail-text">
+                <strong>Phone</strong>
+                <a href="tel:+919949189496" aria-label="Call 099491 89496">
+                  099491 89496
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-icon" aria-hidden="true">&#128172;</div>
+              <div class="contact-detail-text">
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20enquire%20about%20pet%20boarding."
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="Chat with us on WhatsApp">
+                  Chat with us on WhatsApp &#8594;
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-icon" aria-hidden="true">&#128231;</div>
+              <div class="contact-detail-text">
+                <strong>Email</strong>
+                <a href="mailto:shirockpetboarding@gmail.com"
+                   aria-label="Email shirockpetboarding@gmail.com">
+                  shirockpetboarding@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-icon" aria-hidden="true">&#128336;</div>
+              <div class="contact-detail-text">
+                <strong>Hours</strong>
+                <span>Open daily, 8 AM &#8211; 8 PM</span>
+              </div>
+            </div>
+
+            <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20book%20boarding%20for%20my%20pet."
+               class="btn btn-whatsapp"
+               target="_blank" rel="noopener noreferrer"
+               style="margin-top:8px">
+              <svg width="18" height="18" viewBox="0 0 24 24"
+                   fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Book a Boarding Slot
+            </a>
+          </div>
+
+          <!-- Right: Google Maps embed -->
+          <div class="map-wrapper fade-in-right"
+               aria-label="ShiRock Pet Boarding on Google Maps">
+            <!--
+              Google Maps embed for Khanapur Village, Gandipet, Narsingi,
+              Hyderabad, Telangana 500075.
+              To use your exact Business Profile embed:
+              1. Search your business on Google Maps
+              2. Click Share > Embed a map > Copy HTML
+              3. Replace the iframe src below with your embed src URL.
+            -->
+            <iframe
+              src="https://maps.google.com/maps?q=Khanapur+Village+Gandipet+Narsingi+Hyderabad+Telangana+500075&output=embed&z=15"
+              title="ShiRock Pet Boarding location &#8212; Khanapur Village, Gandipet, Narsingi, Hyderabad"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div><!-- /contact-grid -->
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ================================================================
        FLOATING WHATSAPP BUTTON
-  ───────────────────────────────────────────────────────────── -->
-  <a href="https://wa.me/919000000000?text=Hi%2C+I%27d+like+to+know+more+about+pet+boarding+at+ShiRock+Pets"
-     class="wa-float"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+  ================================================================ -->
+  <a href="https://wa.me/919949189496?text=Hi%20ShiRock!%20I%27d%20like%20to%20enquire%20about%20pet%20boarding."
+     class="whatsapp-float"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Chat with ShiRock on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
   </a>
 
+  <!-- ================================================================
+       FOOTER
+  ================================================================ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
 
-  <!-- ─────────────────────────────────────────────────────────
-       SCRIPTS
-  ───────────────────────────────────────────────────────────── -->
+        <div class="footer-brand">
+          <div class="nav-logo">Shi<span>Rock</span></div>
+          <p>Where pets feel at home. Trusted, loving pet boarding in Gandipet, Hyderabad &#8212; open 7 days a week.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Footer navigation">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+919949189496">099491 89496</a></li>
+            <li>
+              <a href="https://wa.me/919949189496"
+                 target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            </li>
+            <li>
+              <a href="mailto:shirockpetboarding@gmail.com">
+                shirockpetboarding@gmail.com
+              </a>
+            </li>
+            <li><a href="#contact">Gandipet, Hyderabad</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /footer-inner -->
+
+      <div class="footer-bottom">
+        <span>&#169; 2025 ShiRock Pet Boarding, Hyderabad. All rights reserved.</span>
+        <span>Website by
+          <a href="https://github.com/Subhodaya-Racharla" target="_blank"
+             rel="noopener noreferrer">Subhodaya Racharla</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       JAVASCRIPT — no external libraries
+  ================================================================ -->
   <script>
-    // Sticky nav background
-    const nav = document.getElementById('mainNav');
-    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    /* ── Navbar: transparent to solid on scroll ─────────────────── */
+    var navbar = document.getElementById('navbar');
+    function updateNav() {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
 
-    // Mobile menu
-    const hamburger  = document.getElementById('hamburger');
-    const navRight   = document.getElementById('navRight');
-    const navItems   = document.querySelectorAll('.nav-link-item');
+    /* ── Mobile menu ─────────────────────────────────────────────── */
+    var hamburger  = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
 
-    function openMenu()  { navRight.classList.add('open'); hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded', 'true');  document.body.style.overflow = 'hidden'; }
-    function closeMenu() { navRight.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
-
-    hamburger.addEventListener('click', () => navRight.classList.contains('open') ? closeMenu() : openMenu());
-    navItems.forEach(a => a.addEventListener('click', closeMenu));
-
-    // Close on outside click
-    document.addEventListener('click', e => {
-      if (navRight.classList.contains('open') && !nav.contains(e.target)) closeMenu();
+    hamburger.addEventListener('click', function () {
+      var open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
 
-    // Escape key
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    document.querySelectorAll('.mobile-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ── Scroll-reveal (Intersection Observer) ───────────────────── */
+    var animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    animEls.forEach(function (el) { revealObs.observe(el); });
+
+    /* Hero and trust bar are above fold — reveal immediately */
+    document.querySelectorAll('#hero .fade-in, #trust-bar .fade-in').forEach(function (el) {
+      el.classList.add('visible');
+    });
+
+    /* ── Carousel ────────────────────────────────────────────────── */
+    (function () {
+      var track       = document.getElementById('carouselTrack');
+      var dotsWrapper = document.getElementById('carouselDots');
+      var prevBtn     = document.getElementById('prevBtn');
+      var nextBtn     = document.getElementById('nextBtn');
+      if (!track) return;
+
+      var slides      = track.querySelectorAll('.carousel-slide');
+      var total       = slides.length;
+      var current     = 0;
+      var timer       = null;
+      var touchStartX = 0;
+
+      /* Build dot buttons */
+      slides.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+        dotsWrapper.appendChild(dot);
+      });
+
+      function goTo(idx) {
+        current = ((idx % total) + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dotsWrapper.querySelectorAll('.carousel-dot').forEach(function (d, i) {
+          d.classList.toggle('active', i === current);
+          d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+        });
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function startTimer() { timer = setInterval(next, 4000); }
+      function resetTimer() { clearInterval(timer); startTimer(); }
+
+      nextBtn.addEventListener('click', function () { next(); resetTimer(); });
+      prevBtn.addEventListener('click', function () { prev(); resetTimer(); });
+
+      /* Touch swipe support */
+      track.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      track.addEventListener('touchend', function (e) {
+        var diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetTimer(); }
+      });
+
+      /* Pause on mouse hover */
+      var wrapper = track.closest('.carousel-wrapper');
+      if (wrapper) {
+        wrapper.addEventListener('mouseenter', function () { clearInterval(timer); });
+        wrapper.addEventListener('mouseleave', startTimer);
+      }
+
+      startTimer();
+    })();
   </script>
 
 </body>
