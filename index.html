@@ -34,23 +34,16 @@
   <meta property="og:title"       content="ShiRock Pet Boarding Hyderabad | Dog &amp; Cat Boarding in Gandipet" />
   <meta property="og:description" content="Safe, loving pet boarding in Gandipet, Hyderabad. Dog boarding, cat boarding, day care. 5.0 stars on Google. Call 099491 89496." />
   <meta property="og:url"         content="https://www.shirockpetboarding.com/" />
-  <!--
-    og:image — REPLACE with a real 1200×630 photo of the facility.
-    Upload the photo to the repo root and update the path below.
-    <meta property="og:image" content="https://www.shirockpetboarding.com/og-image.jpg" />
-    <meta property="og:image:width"  content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt"    content="ShiRock Pet Boarding facility in Gandipet, Hyderabad" />
-  -->
+  <meta property="og:image" content="https://www.shirockpetboarding.com/facility.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"    content="ShiRock Pet Boarding facility in Gandipet, Hyderabad" />
 
   <!-- ─── Twitter / X Card ───────────────────────────────────── -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="ShiRock Pet Boarding Hyderabad" />
   <meta name="twitter:description" content="Safe, loving pet boarding in Gandipet, Hyderabad. 5.0 stars on Google." />
-  <!--
-    twitter:image — same photo as og:image above
-    <meta name="twitter:image" content="https://www.shirockpetboarding.com/og-image.jpg" />
-  -->
+  <meta name="twitter:image" content="https://www.shirockpetboarding.com/facility.jpg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -96,9 +89,9 @@
       "worstRating": "1"
     },
     "sameAs": [
-      "https://www.google.com/maps/search/ShiRock+Pet+Boarding+Hyderabad"
+      "https://www.google.com/maps?gs_lcrp=EgZjaHJvbWUqCAgBEEUYJxg7MgYIABBFGDwyCAgBEEUYJxg7MgYIAhBFGDsyBggDEEUYOTIMCAQQIxgnGIAEGIoFMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIMzAwNGowajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=in&geocode=Kf9JiAB8lcs7MfgbRXBh6cUg&daddr=Khanapur+village,+Gandipet,+Narsingi,+Hyderabad,+Telangana+500075"
     ],
-    "hasMap": "https://maps.google.com/maps?q=Khanapur+Village+Gandipet+Narsingi+Hyderabad",
+    "hasMap": "https://www.google.com/maps?geocode=Kf9JiAB8lcs7MfgbRXBh6cUg&daddr=Khanapur+village,+Gandipet,+Narsingi,+Hyderabad,+Telangana+500075",
     "areaServed": {
       "@type": "City",
       "name": "Hyderabad"
@@ -254,26 +247,16 @@
       position: relative;
       overflow: hidden;
 
-      /*
-        // REPLACE WITH HERO IMAGE
-        background-image: url('your-hero-image.jpg');
-        background-size: cover;
-        background-position: center;
-        Recommended: warm-toned photo of a happy dog or pet at the facility.
-      */
-      background: linear-gradient(
-        135deg,
-        #2A1000 0%,
-        #3D1F00 40%,
-        #5C3010 70%,
-        #3D1F00 100%
-      );
+      background-image: url('facility.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: #3D1F00;
     }
     #hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 60% 50%, rgba(212,124,47,.08) 0%, transparent 70%);
+      background: rgba(30, 12, 0, 0.62);
       pointer-events: none;
     }
 
@@ -460,11 +443,14 @@
       text-align: center;
       padding: 24px;
     }
-    /* REPLACE THESE BACKGROUNDS WITH REAL PHOTOS */
-    .si-1 { background: #5C3010; }
-    .si-2 { background: #7A4220; }
-    .si-3 { background: #4A2800; }
-    .si-4 { background: #6B3818; }
+    .service-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
 
     .service-body {
       background: var(--white);
@@ -531,13 +517,14 @@
       position: relative;
       flex-shrink: 0;
     }
-    /* REPLACE THESE WITH REAL PHOTOS */
-    .gph-1 { background: #4A2800; }
-    .gph-2 { background: #5C3210; }
-    .gph-3 { background: #3A1E00; }
-    .gph-4 { background: #6B3A18; }
-    .gph-5 { background: #512800; }
-    .gph-6 { background: #7A4520; }
+    .carousel-slide img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
 
     .gallery-ph {
       position: absolute;
@@ -959,16 +946,6 @@
          HERO
     ================================================================ -->
     <section id="hero" aria-label="Hero — ShiRock Pet Boarding">
-      <!--
-        // REPLACE WITH HERO IMAGE
-        Add to #hero CSS:
-          background-image: url('your-hero.jpg');
-          background-size: cover;
-          background-position: center;
-        and remove the gradient background.
-        Photo suggestion: warm outdoor shot of a happy dog at the Gandipet facility.
-        alt="Pet boarding facility Gandipet Hyderabad ShiRock"
-      -->
       <div class="container">
         <div class="hero-content fade-in">
           <span class="hero-eyebrow">Gandipet, Hyderabad</span>
@@ -1045,14 +1022,7 @@
       <!-- Service 1: Dog Boarding -->
       <article class="service-row" aria-label="Dog boarding service">
         <div class="service-image fade-in-left">
-          <div class="service-image-ph si-1">
-            <!--
-              // REPLACE WITH SERVICE IMAGE
-              Photo: happy dogs in a safe boarding space
-              alt="Dog boarding facility Hyderabad Gandipet ShiRock"
-            -->
-            // REPLACE WITH PHOTO &#8212; Dog boarding, happy dogs, safe space
-          </div>
+          <img src="gallery-bichon.jpg" alt="Dog boarding at ShiRock Pet Boarding facility, Gandipet Hyderabad" loading="lazy">
         </div>
         <div class="service-body fade-in-right">
           <div class="service-num" aria-hidden="true">01</div>
@@ -1073,14 +1043,7 @@
       <!-- Service 2: Cat Boarding -->
       <article class="service-row reverse" aria-label="Cat boarding service">
         <div class="service-image fade-in-right">
-          <div class="service-image-ph si-2">
-            <!--
-              // REPLACE WITH SERVICE IMAGE
-              Photo: calm, cozy cat space
-              alt="Cat boarding Hyderabad ShiRock Gandipet"
-            -->
-            // REPLACE WITH PHOTO &#8212; Cat boarding, calm cozy space
-          </div>
+          <img src="gallery-poms.jpg" alt="Pomeranians at ShiRock Pet Boarding, Hyderabad" loading="lazy">
         </div>
         <div class="service-body fade-in-left">
           <div class="service-num" aria-hidden="true">02</div>
@@ -1101,14 +1064,7 @@
       <!-- Service 3: Day Care -->
       <article class="service-row" aria-label="Pet day care service">
         <div class="service-image fade-in-left">
-          <div class="service-image-ph si-3">
-            <!--
-              // REPLACE WITH SERVICE IMAGE
-              Photo: morning drop-off, dog playing
-              alt="Pet day care Hyderabad dog day care Gandipet ShiRock"
-            -->
-            // REPLACE WITH PHOTO &#8212; Day care, morning drop-off fun
-          </div>
+          <img src="gallery-golden.jpg" alt="Golden Retriever puppy at ShiRock Pet Boarding day care, Hyderabad" loading="lazy">
         </div>
         <div class="service-body fade-in-right">
           <div class="service-num" aria-hidden="true">03</div>
@@ -1129,14 +1085,7 @@
       <!-- Service 4: Special Care -->
       <article class="service-row reverse" aria-label="Special care service">
         <div class="service-image fade-in-right">
-          <div class="service-image-ph si-4">
-            <!--
-              // REPLACE WITH SERVICE IMAGE
-              Photo: gentle handling of senior or post-surgery pet
-              alt="Senior pet care post-surgery pet boarding Hyderabad ShiRock"
-            -->
-            // REPLACE WITH PHOTO &#8212; Special care, gentle attentive support
-          </div>
+          <img src="gallery-frenchie.jpg" alt="French Bulldog special care at ShiRock Pet Boarding, Hyderabad" loading="lazy">
         </div>
         <div class="service-body fade-in-left">
           <div class="service-num" aria-hidden="true">04</div>
@@ -1173,82 +1122,34 @@
           <div class="carousel-track-container">
             <div class="carousel-track" id="carouselTrack" role="list">
 
-              <!-- Slide 1 — REPLACE WITH ACTUAL PHOTO -->
-              <div class="carousel-slide gph-1" role="listitem" aria-label="Gallery 1 of 6">
-                <div class="gallery-ph">
-                  <div class="gallery-ph-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24"
-                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
-                  </div>
-                  // ADD PHOTO HERE &#8212; Dog playing in the yard
-                </div>
+              <!-- Slide 1 -->
+              <div class="carousel-slide" role="listitem" aria-label="Gallery 1 of 6">
+                <img src="facility.jpg" alt="ShiRock Pet Boarding facility exterior, Gandipet Hyderabad" loading="lazy">
               </div>
 
-              <!-- Slide 2 — REPLACE WITH ACTUAL PHOTO -->
-              <div class="carousel-slide gph-2" role="listitem" aria-label="Gallery 2 of 6">
-                <div class="gallery-ph">
-                  <div class="gallery-ph-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24"
-                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
-                  </div>
-                  // ADD PHOTO HERE &#8212; Facility interior
-                </div>
+              <!-- Slide 2 -->
+              <div class="carousel-slide" role="listitem" aria-label="Gallery 2 of 6">
+                <img src="gallery-poodle.jpg" alt="Red Poodle puppy at ShiRock Pet Boarding, Hyderabad" loading="lazy">
               </div>
 
-              <!-- Slide 3 — REPLACE WITH ACTUAL PHOTO -->
-              <div class="carousel-slide gph-3" role="listitem" aria-label="Gallery 3 of 6">
-                <div class="gallery-ph">
-                  <div class="gallery-ph-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24"
-                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
-                  </div>
-                  // ADD PHOTO HERE &#8212; Cat resting comfortably
-                </div>
+              <!-- Slide 3 -->
+              <div class="carousel-slide" role="listitem" aria-label="Gallery 3 of 6">
+                <img src="gallery-pom-black.jpg" alt="Tiny Pomeranian puppy at ShiRock Pet Boarding, Hyderabad" loading="lazy">
               </div>
 
-              <!-- Slide 4 — REPLACE WITH ACTUAL PHOTO -->
-              <div class="carousel-slide gph-4" role="listitem" aria-label="Gallery 4 of 6">
-                <div class="gallery-ph">
-                  <div class="gallery-ph-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24"
-                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
-                  </div>
-                  // ADD PHOTO HERE &#8212; Outdoor play area
-                </div>
+              <!-- Slide 4 -->
+              <div class="carousel-slide" role="listitem" aria-label="Gallery 4 of 6">
+                <img src="gallery-exotic.jpg" alt="Exotic pets at ShiRock, Hyderabad" loading="lazy">
               </div>
 
-              <!-- Slide 5 — REPLACE WITH ACTUAL PHOTO -->
-              <div class="carousel-slide gph-5" role="listitem" aria-label="Gallery 5 of 6">
-                <div class="gallery-ph">
-                  <div class="gallery-ph-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24"
-                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
-                  </div>
-                  // ADD PHOTO HERE &#8212; Dogs relaxing / sleeping area
-                </div>
+              <!-- Slide 5 -->
+              <div class="carousel-slide" role="listitem" aria-label="Gallery 5 of 6">
+                <img src="gallery-frenchie.jpg" alt="French Bulldog puppy at ShiRock Pet Boarding, Hyderabad" loading="lazy">
               </div>
 
-              <!-- Slide 6 — REPLACE WITH ACTUAL PHOTO -->
-              <div class="carousel-slide gph-6" role="listitem" aria-label="Gallery 6 of 6">
-                <div class="gallery-ph">
-                  <div class="gallery-ph-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24"
-                         fill="rgba(255,255,255,0.3)" aria-hidden="true">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
-                  </div>
-                  // ADD PHOTO HERE &#8212; Team with pets / happy reunion
-                </div>
+              <!-- Slide 6 -->
+              <div class="carousel-slide" role="listitem" aria-label="Gallery 6 of 6">
+                <img src="gallery-bichon.jpg" alt="Bichon Frise with ShiRock owner, Gandipet Hyderabad" loading="lazy">
               </div>
 
             </div><!-- /carousel-track -->
@@ -1401,7 +1302,7 @@
         </div><!-- /reviews-grid -->
 
         <div class="reviews-cta fade-in">
-          <a href="https://www.google.com/maps/search/ShiRock+Pet+Boarding+Hyderabad"
+          <a href="https://www.google.com/maps?gs_lcrp=EgZjaHJvbWUqCAgBEEUYJxg7MgYIABBFGDwyCAgBEEUYJxg7MgYIAhBFGDsyBggDEEUYOTIMCAQQIxgnGIAEGIoFMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIMzAwNGowajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=Kf9JiAB8lcs7MfgbRXBh6cUg&daddr=Khanapur+village,+Gandipet,+Narsingi,+Hyderabad,+Telangana+500075"
              class="btn btn-amber"
              target="_blank" rel="noopener noreferrer"
              aria-label="See all 16 reviews on Google">
@@ -1510,8 +1411,8 @@
               3. Replace the iframe src below with your embed src URL.
             -->
             <iframe
-              src="https://maps.google.com/maps?q=Khanapur+Village+Gandipet+Narsingi+Hyderabad+Telangana+500075&output=embed&z=15"
-              title="ShiRock Pet Boarding location &#8212; Khanapur Village, Gandipet, Narsingi, Hyderabad"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.86!2d78.3085!3d17.3616!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb957c008849ff%3A0x20c5e96170451bf8!2sShiRock%20Pet%20Boarding!5e0!3m2!1sen!2sin!4v1713260000000!5m2!1sen!2sin"
+              title="ShiRock Pet Boarding &#8212; Khanapur Village, Gandipet, Narsingi, Hyderabad"
               allowfullscreen
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
